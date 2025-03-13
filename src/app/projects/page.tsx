@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import ProjectCard, { Project } from "../components/ProjectCard";
 
 
 interface Project {

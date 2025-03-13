@@ -7,6 +7,9 @@ import CustomCursor from "./components/CustomCursor";
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
+      <head>
+      <link rel="stylesheet" href="https://use.typekit.net/nky3fim.css" />
+      </head>
       <body className="flex flex-col h-screen overflow-hidden bg-secondary">
       <CustomCursor />
         <div className="flex-shrink-0">

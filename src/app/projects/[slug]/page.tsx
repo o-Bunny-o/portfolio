@@ -14,13 +14,37 @@ interface ProjectData {
 }
 
 const PROJECT_DATA: ProjectData = {
-  "projet-1": {
+  "Neon Calculator": {
     slug: "projet-1",
-    title: "Projet 1",
-    image: "/images/projet1.png",
+    title: "Neon Calculator",
+    image: "/images/calculator.png",
     description: "Description détaillée du projet 1",
     technologies: "React, Next.js, Tailwind CSS",
     challenges: "Intégration d'une API externe et animation",
+  },
+  "projet-2": {
+    slug: "projet-2",
+    title: "Projet 2",
+    image: "/images/projet2.png",
+    description: "Description détaillée du projet 2",
+    technologies: "HTML, CSS, JavaScript",
+    challenges: "Création d'un design responsive",
+  },
+  "projet-3": {
+    slug: "projet-3",
+    title: "Projet 3",
+    image: "/images/projet3.png",
+    description: "Description détaillée du projet 3",
+    technologies: "React, Redux",
+    challenges: "Gestion d'état complexe",
+  },
+  "projet-4": {
+    slug: "projet-4",
+    title: "Projet 4",
+    image: "/images/projet4.png",
+    description: "Description détaillée du projet 4",
+    technologies: "Next.js, Tailwind CSS",
+    challenges: "Rendu côté serveur et optimisation SEO",
   },
 }
 

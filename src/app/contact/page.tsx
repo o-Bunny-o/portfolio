@@ -22,10 +22,9 @@ export default function ContactPage() {
       animate={{ x: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      <h1 className="text-center text-3xl text-primary font-bold mb-6">Contactez-moi</h1>
-      <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
+      <form onSubmit={handleSubmit} className="flex flex-col space-y-4 mt-10">
         <label className="flex flex-col">
-          <span className="text-secondary">Nom:</span>
+          <span className="text-primary">Name:</span>
           <input
             type="text"
             name="name"
@@ -36,7 +35,7 @@ export default function ContactPage() {
           />
         </label>
         <label className="flex flex-col">
-          <span className="text-secondary">Email:</span>
+          <span className="text-primary">Email:</span>
           <input
             type="email"
             name="email"
@@ -47,7 +46,7 @@ export default function ContactPage() {
           />
         </label>
         <label className="flex flex-col">
-          <span className="text-secondary">Message:</span>
+          <span className="text-primary">Message:</span>
           <textarea
             name="message"
             value={form.message}
@@ -60,7 +59,7 @@ export default function ContactPage() {
           type="submit"
           className="bg-primary text-white py-2 px-4 rounded hover:bg-primary-dark transition duration-300"
         >
-          Envoyer
+          SEND
         </button>
       </form>
     </motion.section>

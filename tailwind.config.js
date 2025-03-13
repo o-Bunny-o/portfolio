@@ -29,6 +29,11 @@ module.exports = {
         white: '#f8f8f8',
         black: '#000000',
       },
+      fontFamily: {
+        sans: ["'All Round Gothic'", "'Quicksand'", "sans-serif"],
+        allround: ["'All Round Gothic'", "sans-serif"],
+        quicksand: ["'Quicksand'", "sans-serif"],
+      },
     },
   },
   plugins: [],

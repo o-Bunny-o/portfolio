@@ -6,6 +6,8 @@
 /* hide the default cursor */
 body {
   cursor: none;
+  @apply font-sans;
+
 }
 
 /* orange little ball */

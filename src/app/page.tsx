@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 
-// Exit (explosion) variant generator – here the duration is set to 5 seconds.
+// exit (explosion) variant generator – here the duration is set to 5 seconds.
 const explosionVariant = (custom: { x: number; y: number; rotate: number }) => ({
   exit: {
     opacity: 0,
@@ -16,15 +16,15 @@ const explosionVariant = (custom: { x: number; y: number; rotate: number }) => (
   },
 });
 
-// Variant for the creative tagline (with emojis) to reveal from the center out.
+// variant 4 creative tagline (with emojis) to reveal from the center out.
 const centerReveal = {
   hidden: {
     opacity: 0,
-    clipPath: "inset(0 50% 0 50%)", // Clipped from the sides.
+    clipPath: "inset(0 50% 0 50%)", // from the sides
   },
   visible: {
     opacity: 1,
-    clipPath: "inset(0 0% 0 0%)", // Fully visible.
+    clipPath: "inset(0 0% 0 0%)", // all there
     transition: {
       duration: 1.5,
       ease: "easeOut",
@@ -37,9 +37,9 @@ export default function HomePage() {
   const router = useRouter();
 
   const handleEnterClick = () => {
-    // Start exit animations.
+    // exit anim
     setShowContent(false);
-    // Wait for exit animation to complete (5 seconds) before routing.
+    // wait before routing
     setTimeout(() => {
       router.push("/about");
     }, 5000);
@@ -59,9 +59,9 @@ export default function HomePage() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, transition: { duration: 1 } }}
           >
-            {/* Main heading fades in */}
+            {/* main heading fades in */}
             <motion.h1
-              className="text-5xl font-bold text-grayCustom-light mb-6"
+              className="text-5xl font-medium text-grayCustom-light mb-6"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1.2, ease: "easeOut" }}
@@ -70,7 +70,7 @@ export default function HomePage() {
               Welcome to my Portfolio!
             </motion.h1>
 
-            {/* Creative tagline appears with a center-out reveal */}
+            {/* tagline appears with a center-out reveal */}
             <motion.h5
               className="text-2xl font-semibold text-accent mb-10"
               variants={centerReveal}
@@ -81,9 +81,9 @@ export default function HomePage() {
               💻✨ Creative, Curious & Always Eager to Learn! ✨🎨
             </motion.h5>
 
-            {/* Paragraph fades in */}
+            {/* p fades in */}
             <motion.p
-              className="text-sm font-normal text-grayCustom-light mb-8"
+              className="text-sm font-normal text-grayCustom-light mb-8 font-quicksand"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.9, duration: 1 }}
@@ -97,7 +97,7 @@ export default function HomePage() {
               challenges, and keep learning every step of the way!
             </motion.p>
 
-            {/* Circular Enter button centered in the page */}
+            {/* enter button */}
             <motion.button
               onClick={handleEnterClick}
               className="bg-primary text-white w-16 h-16 mx-auto flex items-center justify-center rounded-full transform hover:scale-110 transition duration-300 cursor-default"

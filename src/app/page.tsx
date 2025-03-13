@@ -91,8 +91,8 @@ export default function HomePage() {
             >
               From web development and graphic design to customer service, my journey
               has been all about growing skills and embracing new challenges. Whether
-              I'm coding a sleek interface or brainstorming design ideas, I bring
-              enthusiasm and adaptability to the table. I'm on the lookout for exciting
+              I&apos;m coding a sleek interface or brainstorming design ideas, I bring
+              enthusiasm and adaptability to the table. I&apos;m on the lookout for exciting
               projects and a dynamic team where I can share my energy, take on new
               challenges, and keep learning every step of the way!
             </motion.p>

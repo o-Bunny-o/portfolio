@@ -45,6 +45,16 @@ body {
   animation: dustAnimation 1s forwards;
 }
 
+/* .no-scrollbar hides scrollbars across browsers */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;  /* ie & edge */
+  scrollbar-width: none;     /* firefox */
+}
+
+
 /* keyframes 4 dust animation: moves and fades out */
 @keyframes dustAnimation {
   0% {

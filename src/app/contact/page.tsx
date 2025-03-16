@@ -7,7 +7,9 @@ export default function ContactPage() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState("idle");
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
@@ -27,6 +29,7 @@ export default function ContactPage() {
         setStatus("error");
       }
     } catch (error) {
+      console.error("Error sending form:", error);
       setStatus("error");
     }
     console.log("Formulaire envoyé:", form);
@@ -79,7 +82,9 @@ export default function ContactPage() {
           SEND
         </button>
         {status === "loading" && <p className="text-primary">Sending...</p>}
-        {status === "success" && <p className="text-primary">Message sent successfully!</p>}
+        {status === "success" && (
+          <p className="text-primary">Message sent successfully!</p>
+        )}
         {status === "error" && <p className="text-primary">Error sending message.</p>}
       </form>
     </motion.section>

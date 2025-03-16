@@ -5,9 +5,7 @@ export async function POST(request: Request) {
   try {
     const { name, email, message } = await request.json();
     console.log("Received contact form data:", { name, email, message });
-    
-    // Process your form data here:
-    // For example, send an email or store it in a database.
+  
 
     return NextResponse.json({ success: true });
   } catch (error) {

@@ -1,19 +1,36 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { motion } from "framer-motion"
+import { useState } from "react";
+import { motion } from "framer-motion";
 
 export default function ContactPage() {
-  const [form, setForm] = useState({ name: "", email: "", message: "" })
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [status, setStatus] = useState("idle");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value })
-  }
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log("Formulaire envoyé:", form)
-  }
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("loading");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (res.ok) {
+        setStatus("success");
+        setForm({ name: "", email: "", message: "" });
+      } else {
+        setStatus("error");
+      }
+    } catch (error) {
+      setStatus("error");
+    }
+    console.log("Formulaire envoyé:", form);
+  };
 
   return (
     <motion.section
@@ -61,7 +78,10 @@ export default function ContactPage() {
         >
           SEND
         </button>
+        {status === "loading" && <p className="text-primary">Sending...</p>}
+        {status === "success" && <p className="text-primary">Message sent successfully!</p>}
+        {status === "error" && <p className="text-primary">Error sending message.</p>}
       </form>
     </motion.section>
-  )
+  );
 }

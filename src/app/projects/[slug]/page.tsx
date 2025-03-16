@@ -14,8 +14,8 @@ interface ProjectData {
 }
 
 const PROJECT_DATA: ProjectData = {
-  "Neon Calculator": {
-    slug: "projet-1",
+  "projet-1": {
+    slug: "neon-calculator",
     title: "Neon Calculator",
     image: "/images/calculator.png",
     description: "Description détaillée du projet 1",
@@ -23,25 +23,33 @@ const PROJECT_DATA: ProjectData = {
     challenges: "Intégration d'une API externe et animation",
   },
   "projet-2": {
-    slug: "projet-2",
-    title: "Projet 2",
-    image: "/images/projet2.png",
+    slug: "la-porte",
+    title: "La Porte",
+    image: "/images/laportelogo.png",
     description: "Description détaillée du projet 2",
     technologies: "HTML, CSS, JavaScript",
     challenges: "Création d'un design responsive",
   },
   "projet-3": {
-    slug: "projet-3",
-    title: "Projet 3",
-    image: "/images/projet3.png",
+    slug: "todo-list",
+    title: "Todo List",
+    image: "/images/todolist.png",
     description: "Description détaillée du projet 3",
     technologies: "React, Redux",
     challenges: "Gestion d'état complexe",
   },
   "projet-4": {
-    slug: "projet-4",
-    title: "Projet 4",
-    image: "/images/projet4.png",
+    slug: "premiers-vendredis",
+    title: "Les Premiers Vendredis",
+    image: "/images/premiers.jpg",
+    description: "Description détaillée du projet 4",
+    technologies: "Next.js, Tailwind CSS",
+    challenges: "Rendu côté serveur et optimisation SEO",
+  },
+  "projet-5": {
+    slug: "icons",
+    title: "LMilano Cortina",
+    image: "/images/picons.jpg",
     description: "Description détaillée du projet 4",
     technologies: "Next.js, Tailwind CSS",
     challenges: "Rendu côté serveur et optimisation SEO",
@@ -64,7 +72,7 @@ export default function ProjectDetailPage() {
 
   return (
     <section className="max-w-3xl mx-auto">
-      <h1 className="text-3xl text-primary font-bold mb-4">{project.title}</h1>
+      <h1 className="text-xl text-primary font-bold mb-4">{project.title}</h1>
       <img
         src={project.image}
         alt={project.title}
@@ -72,10 +80,10 @@ export default function ProjectDetailPage() {
       />
       <p className="text-secondary mb-4">{project.description}</p>
       <p className="mb-2">
-        <strong>Technologies utilisées:</strong> {project.technologies}
+        <strong>Tech Used:</strong> {project.technologies}
       </p>
       <p>
-        <strong>Défis rencontrés:</strong> {project.challenges}
+        <strong>Challenges|Struggles:</strong> {project.challenges}
       </p>
     </section>
   )

@@ -1,5 +1,6 @@
 "use client";
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -16,7 +17,7 @@ function DustParticle({ offsetX, offsetY }: { offsetX: number; offsetY: number }
         duration: 2,
         ease: "easeInOut",
         repeat: Infinity,
-        repeatDelay: 13, // 2 + 13 = 15 seconds per cycle
+        repeatDelay: 13,
       },
     },
   };
@@ -39,9 +40,7 @@ function DustParticles() {
   return (
     <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 pointer-events-none">
       {particles.map((_, i) => {
-        // each particle gets a random horizontal offset from -30px to 30px.
         const offsetX = Math.random() * 60 - 30;
-        // & a random vertical offset from 0 to 30px (downward).
         const offsetY = Math.random() * 30;
         return <DustParticle key={i} offsetX={offsetX} offsetY={offsetY} />;
       })}
@@ -72,21 +71,102 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
 }
 
 export default function Header() {
+  const pathname = usePathname();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
-    <motion.header
-      className="text-primary p-2 mt-5"
-      initial={{ y: -50 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.8 }}
-    >
-      <nav className="pt-5 flex justify-center space-x-4">
-        <ul className="flex space-x-10">
-          <li><NavLink href="/">Home</NavLink></li>
-          <li><NavLink href="/about">About me</NavLink></li>
-          <li><NavLink href="/projects">Projects</NavLink></li>
-          <li><NavLink href="/contact">Contact</NavLink></li>
-        </ul>
-      </nav>
-    </motion.header>
+    <AnimatePresence mode="wait">
+      <motion.header
+        key={pathname} // Forces re-mount on route change
+        className="text-primary p-2 mt-5 relative"
+        initial={{ y: -50 }}
+        animate={{ y: 0 }}
+        exit={{ y: -50, opacity: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <div className="flex justify-between items-center">
+          {/* On Mobile: show "MyPortfolio" on the left; on Desktop, it's hidden */}
+          <div className="block md:hidden text-xl font-bold">MyPortfolio</div>
+
+          {/* Desktop Navigation: centered */}
+          <nav className="hidden md:flex flex-grow justify-center">
+            <ul className="flex space-x-10">
+              <li>
+                <NavLink href="/">Home</NavLink>
+              </li>
+              <li>
+                <NavLink href="/about">About me</NavLink>
+              </li>
+              <li>
+                <NavLink href="/projects">Projects</NavLink>
+              </li>
+              <li>
+                <NavLink href="/contact">Contact</NavLink>
+              </li>
+            </ul>
+          </nav>
+
+          {/* Mobile: Burger menu on the right */}
+          <div className="block md:hidden">
+            <button
+              className="text-primary focus:outline-none"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              {mobileMenuOpen ? (
+                // X icon when menu is open
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-8 w-8"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                // Burger icon when menu is closed
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-8 w-8"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Navigation Menu */}
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.nav
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3 }}
+              className="md:hidden mt-2"
+            >
+              <ul className="flex flex-col space-y-2">
+                <li>
+                  <NavLink href="/">Home</NavLink>
+                </li>
+                <li>
+                  <NavLink href="/about">About me</NavLink>
+                </li>
+                <li>
+                  <NavLink href="/projects">Projects</NavLink>
+                </li>
+                <li>
+                  <NavLink href="/contact">Contact</NavLink>
+                </li>
+              </ul>
+            </motion.nav>
+          )}
+        </AnimatePresence>
+      </motion.header>
+    </AnimatePresence>
   );
 }

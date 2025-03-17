@@ -24,7 +24,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           </DraggableScrollContainer>
         </main>
 
-        <div className="flex-shrink-0">
+        <div className="flex-shrink-0 hidden md:block">
           <Footer />
         </div>
       </body>

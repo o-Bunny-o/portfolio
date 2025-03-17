@@ -25,7 +25,7 @@ const PROJECT_DATA: ProjectData = {
     description: "Description détaillée du projet 1",
     technologies: "React, Next.js, Tailwind CSS",
     challenges: "Intégration d'une API externe et animation",
-    github: "https://github.com/yourUsername/neon-calculator",
+    github: "https://github.com/o-Bunny-o/calculator",
   },
   "la-porte": {
     slug: "la-porte",
@@ -79,7 +79,7 @@ const PROJECT_DATA: ProjectData = {
 <br/>`,
     technologies: "Node.js, Express, JavaScript, HTML/CSS, JSON",
     challenges: "Log properly the positions of the characters, adding scores based on that and avoid re-adding them",
-    github: "https://github.com/yourUsername/la_porte",
+    github: "https://github.com/o-Bunny-o/la_porte",
   },
   "todo-list": {
     slug: "todo-list",
@@ -151,7 +151,7 @@ const PROJECT_DATA: ProjectData = {
 </ul>`,
     technologies: "React, Next.js, Tailwind CSS",
     challenges: "Integration of an external API and animation",
-    github: "https://github.com/yourUsername/calculator",
+    github: "https://github.com/o-Bunny-o/my-todo-app",
   },
   "premiers-vendredis": {
     slug: "premiers-vendredis",

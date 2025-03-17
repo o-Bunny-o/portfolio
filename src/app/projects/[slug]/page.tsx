@@ -1,6 +1,6 @@
 "use client"
 
-import { useParams, useRouter } from "next/navigation"
+import { useParams } from "next/navigation"
 import { motion } from "framer-motion"
 import BackButton from "../../components/BackButton"
 import { FaGithub } from "react-icons/fa"
@@ -368,14 +368,14 @@ export default function ProjectDetailPage() {
           exit={{ opacity: 0, y: 50 }}
         >
           <iframe 
-          src="https://www.behance.net/embed/project/138667857?ilo0=1" 
-          height="316" 
-          width="404" 
-          allowFullScreen 
-          loading="lazy"
-          allow="clipboard-write" 
-          referrerPolicy="strict-origin-when-cross-origin"
-          className="mx-auto"
+            src="https://www.behance.net/embed/project/138667857?ilo0=1" 
+            height="316" 
+            width="404" 
+            allowFullScreen 
+            loading="lazy"
+            allow="clipboard-write" 
+            referrerPolicy="strict-origin-when-cross-origin"
+            className="mx-auto"
           ></iframe>
         </motion.div>
       )}

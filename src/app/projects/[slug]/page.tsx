@@ -16,6 +16,7 @@ interface ProjectData {
 
 const PROJECT_DATA: ProjectData = {
   "neon-calculator": {
+    video: null,
     slug: "neon-calculator",
     title: "Neon Calculator",
     image: "/images/calculator.png",
@@ -24,6 +25,7 @@ const PROJECT_DATA: ProjectData = {
     challenges: "",
   },
   "la-porte": {
+    video: null,
     slug: "la-porte",
     title: "La Porte",
     image: "/images/laportelogo.png",
@@ -102,6 +104,7 @@ const PROJECT_DATA: ProjectData = {
       "Log properly the positions of the characters, adding scores based on that and avoid re-adding them",
   },
   "todo-list": {
+    video: null,
     slug: "todo-list",
     title: "Todo List",
     image: "/images/todolist.png",
@@ -110,6 +113,7 @@ const PROJECT_DATA: ProjectData = {
     challenges: "Gestion d'état complexe",
   },
   "premiers-vendredis": {
+    video: null,
     slug: "premiers-vendredis",
     title: "Les Premiers Vendredis",
     image: "/images/premiers.jpg",
@@ -118,6 +122,7 @@ const PROJECT_DATA: ProjectData = {
     challenges: "Rendu côté serveur et optimisation SEO",
   },
   "icons": {
+    video: null,
     slug: "icons",
     title: "Milano Cortina",
     image: "/images/icons.jpg",
@@ -125,6 +130,7 @@ const PROJECT_DATA: ProjectData = {
     technologies: "Next.js, Tailwind CSS",
     challenges: "Rendu côté serveur et optimisation SEO",
   },
+
 }
 
 export default function ProjectDetailPage() {
@@ -164,7 +170,7 @@ export default function ProjectDetailPage() {
         className="text-secondary text-white font-quicksand mb-4 whitespace-pre-line mt-4"
         dangerouslySetInnerHTML={{ __html: project.description }}
       />
-      {/* Embed video only if project.video exists */}
+      {/* video only if project.video exists */}
       {project.video && (
         <div className="mt-8">
           <video controls className="w-full rounded">

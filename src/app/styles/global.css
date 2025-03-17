@@ -66,3 +66,10 @@ body {
     opacity: 0;
   }
 }
+
+@media (pointer: coarse) {
+  #custom-cursor,
+  #dust-container {
+    display: none !important;
+  }
+}

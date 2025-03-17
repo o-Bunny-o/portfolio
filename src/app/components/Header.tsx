@@ -1,5 +1,6 @@
 "use client";
-import { useState } from "react";
+
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -50,13 +51,13 @@ function DustParticles() {
 
 // dust particles from the bottom center of the active link,
 // & uses a pale text color & lower opacity on inactive links.
-function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
+function NavLink({ href, children, onClick }: { href: string; children: React.ReactNode; onClick?: () => void }) {
   const pathname = usePathname();
   const isActive = pathname === href;
 
   return (
     <Link href={href}>
-      <div className="relative inline-block">
+      <div className="relative inline-block" onClick={onClick}>
         {isActive && <DustParticles />}
         <motion.span
           className={`relative inline-block transform hover:scale-110 transition duration-300 text-2xl ${
@@ -73,11 +74,23 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
 export default function Header() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const mobileNavRef = useRef<HTMLDivElement>(null);
+
+  // outside click closes it
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (mobileMenuOpen && mobileNavRef.current && !mobileNavRef.current.contains(event.target as Node)) {
+        setMobileMenuOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [mobileMenuOpen]);
 
   return (
     <AnimatePresence mode="wait">
       <motion.header
-        key={pathname} // Forces re-mount on route change
+        key={pathname} // routchange remount
         className="text-primary p-2 mt-5 relative"
         initial={{ y: -50 }}
         animate={{ y: 0 }}
@@ -85,35 +98,30 @@ export default function Header() {
         transition={{ duration: 0.8 }}
       >
         <div className="flex justify-between items-center">
-          {/* On Mobile: show "MyPortfolio" on the left; on Desktop, it's hidden */}
-          <div className="block md:hidden text-xl font-bold">MyPortfolio</div>
+<img
+  src="/images/logo.png"
+  alt="MyPortfolio"
+  className="block md:hidden w-48 h-auto mx-8"
+/>
 
-          {/* Desktop Navigation: centered */}
+          {/* centered desktpo navs */}
           <nav className="hidden md:flex flex-grow justify-center">
             <ul className="flex space-x-10">
-              <li>
-                <NavLink href="/">Home</NavLink>
-              </li>
-              <li>
-                <NavLink href="/about">About me</NavLink>
-              </li>
-              <li>
-                <NavLink href="/projects">Projects</NavLink>
-              </li>
-              <li>
-                <NavLink href="/contact">Contact</NavLink>
-              </li>
+              <li><NavLink href="/">Home</NavLink></li>
+              <li><NavLink href="/about">About me</NavLink></li>
+              <li><NavLink href="/projects">Projects</NavLink></li>
+              <li><NavLink href="/contact">Contact</NavLink></li>
             </ul>
           </nav>
 
-          {/* Mobile: Burger menu on the right */}
+          {/* burger on the right */}
           <div className="block md:hidden">
             <button
               className="text-primary focus:outline-none"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               {mobileMenuOpen ? (
-                // X icon when menu is open
+                // X - close
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-8 w-8"
@@ -124,7 +132,7 @@ export default function Header() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               ) : (
-                // Burger icon when menu is closed
+                // birger icon
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-8 w-8"
@@ -138,11 +146,11 @@ export default function Header() {
             </button>
           </div>
         </div>
-
-        {/* Mobile Navigation Menu */}
+        {/* mobile nav menu */}
         <AnimatePresence>
           {mobileMenuOpen && (
             <motion.nav
+              ref={mobileNavRef}
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
@@ -151,16 +159,24 @@ export default function Header() {
             >
               <ul className="flex flex-col space-y-2">
                 <li>
-                  <NavLink href="/">Home</NavLink>
+                  <NavLink href="/" onClick={() => setMobileMenuOpen(false)}>
+                    Home
+                  </NavLink>
                 </li>
                 <li>
-                  <NavLink href="/about">About me</NavLink>
+                  <NavLink href="/about" onClick={() => setMobileMenuOpen(false)}>
+                    About me
+                  </NavLink>
                 </li>
                 <li>
-                  <NavLink href="/projects">Projects</NavLink>
+                  <NavLink href="/projects" onClick={() => setMobileMenuOpen(false)}>
+                    Projects
+                  </NavLink>
                 </li>
                 <li>
-                  <NavLink href="/contact">Contact</NavLink>
+                  <NavLink href="/contact" onClick={() => setMobileMenuOpen(false)}>
+                    Contact
+                  </NavLink>
                 </li>
               </ul>
             </motion.nav>

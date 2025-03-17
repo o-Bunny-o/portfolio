@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
+
 
 interface Project {
   slug: string;
@@ -175,7 +177,7 @@ export default function ProjectsPage() {
               }}
             >
               {project.image && (
-                <img
+                <Image
                   src={project.image}
                   alt={project.title}
                   className="mb-2 w-60 mx-auto h-48 object-cover rounded"

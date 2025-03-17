@@ -1,13 +1,9 @@
-// src: https://framermotionexamples.com/example/drag-transform
-// https://examples.motion.dev/js
-
 "use client";
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { AnimatePresence, motion, useMotionValue, animate } from "framer-motion";
 
-// particles
 function DustParticle({ offsetX, offsetY }: { offsetX: number; offsetY: number }) {
   const variants = {
     initial: { opacity: 0, scale: 0 },
@@ -50,7 +46,6 @@ function DustParticles() {
   );
 }
 
-// exit (explosion) variant generator – keeps the explosion effect for 5 seconds.
 const explosionVariant = (custom: { x: number; y: number }) => ({
   exit: {
     opacity: 0,
@@ -61,7 +56,6 @@ const explosionVariant = (custom: { x: number; y: number }) => ({
   },
 });
 
-// variant for the creative tagline reveal from the center out.
 const centerReveal = {
   hidden: {
     opacity: 0,
@@ -81,7 +75,7 @@ export default function HomePage() {
   const [showContent, setShowContent] = useState(true);
   const router = useRouter();
 
-  // values for draggable elements 
+  // Draggable motion values
   const headingX = useMotionValue(0);
   const headingY = useMotionValue(0);
   const taglineX = useMotionValue(0);
@@ -89,7 +83,7 @@ export default function HomePage() {
   const paragraphX = useMotionValue(0);
   const paragraphY = useMotionValue(0);
 
-  // Reset function to animate positions back to original (0,0)
+  // Reset function
   const resetPositions = () => {
     animate(headingX, 0, { type: "spring", stiffness: 300, damping: 20 });
     animate(headingY, 0, { type: "spring", stiffness: 300, damping: 20 });
@@ -108,7 +102,7 @@ export default function HomePage() {
 
   return (
     <motion.section
-      className="h-full flex flex-col justify-center items-center p-4 relative"
+      className="h-full flex flex-col justify-center items-center p-4 relative pb-16"
       initial={{ opacity: 1 }}
       animate={{ opacity: 1 }}
     >
@@ -122,7 +116,6 @@ export default function HomePage() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, transition: { duration: 1 } }}
           >
-            {/* Draggable Main Heading */}
             <motion.h1
               className="text-5xl font-medium text-grayCustom-light mb-6"
               style={{ x: headingX, y: headingY }}
@@ -137,7 +130,6 @@ export default function HomePage() {
               Welcome to my Portfolio!
             </motion.h1>
 
-            {/* Draggable Tagline */}
             <motion.h5
               className="text-2xl font-semibold text-accent mb-10"
               style={{ x: taglineX, y: taglineY }}
@@ -152,7 +144,6 @@ export default function HomePage() {
               💻✨ Creative, Curious & Always Eager to Learn! ✨🎨
             </motion.h5>
 
-            {/* path 4 the drags */}
             <motion.p
               className="text-sm font-normal text-grayCustom-light mb-8 font-quicksand"
               style={{ x: paragraphX, y: paragraphY }}
@@ -172,7 +163,6 @@ export default function HomePage() {
               challenges, and keep learning every step of the way!
             </motion.p>
 
-            {/* enter */}
             <motion.button
               onClick={handleEnterClick}
               className="bg-primary text-white w-16 h-16 mx-auto flex items-center justify-center rounded-full transform hover:scale-110 transition duration-300 cursor-default"
@@ -191,16 +181,26 @@ export default function HomePage() {
           </motion.div>
         )}
       </AnimatePresence>
-      
-      {/* reset btn */}
+
       <button
         onClick={resetPositions}
-        className="absolute bottom-0 mx-5 text-accent rounded-full transition duration-300"
+        // Move button above the phone bar
+        className="absolute bottom-8 mx-5 text-accent rounded-full transition duration-300"
       >
-<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="bi bi-arrow-clockwise" viewBox="0 0 16 16">
-        <path fillRule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
-        <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
-      </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="25"
+          height="25"
+          fill="currentColor"
+          className="bi bi-arrow-clockwise"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fillRule="evenodd"
+            d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"
+          />
+          <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z" />
+        </svg>
       </button>
     </motion.section>
   );

@@ -127,7 +127,6 @@ const PROJECT_DATA: ProjectData = {
 };
 
 export default function ProjectDetailPage() {
-  // error "any" correction, specificly write the params
   const params = useParams() as { slug: string };
   const slug = params.slug;
   const project = PROJECT_DATA[slug];
@@ -146,9 +145,9 @@ export default function ProjectDetailPage() {
         <img
           src={project.image}
           alt={project.title}
-          className="w-80 h-auto object-cover rounded mb-4"
+          className="w-60 h-auto object-cover rounded mb-4 mx-auto md:mx-0"
         />
-        <div className="flex flex-col justify-center text-left">
+        <div className="flex flex-col justify-center text-left ml-8 mr-8 md:ml-0 md:mr-0">
           <h1 className="text-5xl text-primary font-semibold mb-4">
             {project.title}
           </h1>
@@ -161,7 +160,7 @@ export default function ProjectDetailPage() {
         </div>
       </div>
       <p
-        className="text-secondary text-white font-quicksand mb-4 whitespace-pre-line mt-4"
+        className="text-secondary text-white font-quicksand mb-4 whitespace-pre-line mt-4 ml-8 mr-8 md:ml-0 md:mr-0"
         dangerouslySetInnerHTML={{ __html: project.description }}
       />
     </section>

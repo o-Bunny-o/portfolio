@@ -42,7 +42,7 @@ export default function ContactPage() {
       animate={{ x: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      <form onSubmit={handleSubmit} className="flex flex-col space-y-4 mt-10">
+      <form onSubmit={handleSubmit} className="flex flex-col space-y-4 mt-10 ml-8 mr-8">
         <label className="flex flex-col">
           <span className="text-primary">Name:</span>
           <input

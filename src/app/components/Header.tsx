@@ -98,11 +98,13 @@ export default function Header() {
         transition={{ duration: 0.8 }}
       >
         <div className="flex justify-between items-center">
-<img
-  src="/images/logo.png"
-  alt="MyPortfolio"
-  className="block md:hidden w-48 h-auto mx-8"
-/>
+        <Link href="/">
+          <img
+            src="/images/logo.png"
+            alt="MyPortfolio"
+            className="block md:hidden w-48 h-auto mx-8"
+          />
+        </Link>
 
           {/* centered desktpo navs */}
           <nav className="hidden md:flex flex-grow justify-center">
@@ -116,35 +118,35 @@ export default function Header() {
 
           {/* burger on the right */}
           <div className="block md:hidden">
-            <button
-              className="text-primary focus:outline-none"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            >
-              {mobileMenuOpen ? (
-                // X - close
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-8 w-8"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              ) : (
-                // birger icon
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-8 w-8"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              )}
-            </button>
-          </div>
+  <button
+    className="text-primary focus:outline-none mr-8 relative z-50"
+    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+  >
+    {mobileMenuOpen ? (
+      // X icon when menu is open
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-8 w-8"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    ) : (
+      // Burger icon when menu is closed
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-8 w-8"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    )}
+  </button>
+</div>
         </div>
         {/* mobile nav menu */}
         <AnimatePresence>
@@ -157,7 +159,7 @@ export default function Header() {
               transition={{ duration: 0.3 }}
               className="md:hidden mt-2"
             >
-              <ul className="flex flex-col space-y-2">
+              <ul className="flex flex-col space-y-2 ml-8 ">
                 <li>
                   <NavLink href="/" onClick={() => setMobileMenuOpen(false)}>
                     Home

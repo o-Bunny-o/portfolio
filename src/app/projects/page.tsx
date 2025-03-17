@@ -101,7 +101,7 @@ export default function ProjectsPage() {
   };
 
   return (
-    <section className="max-w-4xl mx-auto mt-16 px-4">
+    <section className="max-w-4xl mx-auto mt-16 px-4 ml-8 mr-8 md:ml-auto md:mr-auto">
       {/* f-b-anim */}
       <motion.div
         className="mb-6 flex gap-4 text-sm"

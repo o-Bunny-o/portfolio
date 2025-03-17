@@ -78,8 +78,7 @@ const PROJECT_DATA: ProjectData = {
 • Victory: If you reach the door with the key, you earn 10 points.
 <br/>`,
     technologies: "Node.js, Express, JavaScript, HTML/CSS, JSON",
-    challenges:
-      "Log properly the positions of the characters, adding scores based on that and avoid re-adding them",
+    challenges: "Log properly the positions of the characters, adding scores based on that and avoid re-adding them",
     github: "https://github.com/yourUsername/la_porte",
   },
   "todo-list": {
@@ -152,100 +151,7 @@ const PROJECT_DATA: ProjectData = {
 </ul>`,
     technologies: "React, Next.js, Tailwind CSS",
     challenges: "Integration of an external API and animation",
-    github: "https://github.com/o-Bunny-o/calculator",
-  },
-  "la-porte": {
-    slug: "la-porte",
-    title: "La Porte",
-    image: "/images/laportelogo.png",
-    description: `<!-- FEATURES SECTION -->
-<h2>FEATURES</h2>
-<ul>
-  <li><strong>User Authentication:</strong> Players can log in, register, and view their saved scores.</li>
-  <li><strong>Dynamic Game Board:</strong> Interactive 8×8 grid where the player must pick up a key and reach the exit door.</li>
-  <li><strong>Score Tracking:</strong> Scores are updated based on performance and saved between sessions.</li>
-  <li><strong>Random Enemy Movement:</strong> Enemies move randomly on the grid, adding extra challenge.</li>
-  <li><strong>Statistics Page:</strong> Displays all players’ scores in a table format.</li>
-</ul>
-
-<!-- TECHNOLOGIES USED SECTION -->
-<h2>TECHNOLOGIES USED</h2>
-<ul>
-  <li><strong>Node.js:</strong> Backend server environment.</li>
-  <li><strong>Express.js:</strong> Framework for handling routes, authentication, and game logic.</li>
-  <li><strong>JavaScript (ES6+):</strong> Implements game logic on both client and server.</li>
-  <li><strong>HTML/CSS:</strong> Provides structured and styled user interface.</li>
-  <li><strong>JSON:</strong> Stores game state and user data.</li>
-</ul>
-
-<!-- INSTALLATION SECTION -->
-<h2>INSTALLATION</h2>
-<ol>
-  <li>Clone this repository:
-    <pre><code>git clone https://github.com/o-Bunny-o/la_porte/</code></pre>
-  </li>
-  <li>Navigate to the project directory:
-    <pre><code>cd la_porte</code></pre>
-  </li>
-  <li>Install the dependencies:
-    <pre><code>npm install</code></pre>
-  </li>
-</ol>
-
-<!-- USAGE SECTION -->
-<h2>USAGE</h2>
-<ol>
-  <li>Start the server:
-    <pre><code>npm start</code></pre>
-  </li>
-  <li>Open your browser and navigate to:
-    <pre><code><a href="http://localhost:81" target="_blank">http://localhost:81</a></code></pre>
-  </li>
-</ol>
-
-<!-- GAME RULES SECTION -->
-<h2>GAME RULES</h2>
-<ul>
-  <li><strong>Objective:</strong> Pick up the key and reach the door to escape.</li>
-  <li><strong>Movement:</strong> Use arrow keys to move up, down, left, or right.</li>
-  <li><strong>Key Pickup:</strong> Move onto the cell containing the key to pick it up.</li>
-  <li><strong>Avoid Enemies:</strong> Moving onto a cell occupied by an enemy results in a game loss.</li>
-  <li><strong>Victory:</strong> Successfully reaching the door with the key awards 10 points.</li>
-</ul>
-
-<!-- FILE STRUCTURE SECTION -->
-<h2>FILE STRUCTURE</h2>
-<ul>
-  <li><strong>server.js:</strong> Main server file (game logic, user authentication, and routes).</li>
-  <li><strong>client.js:</strong> Client-side JavaScript (user interactions, game rendering, and movements).</li>
-  <li><strong>index.html:</strong> Frontend HTML structure of the game.</li>
-  <li><strong>styles.css:</strong> Layout, style, and responsive design.</li>
-  <li><strong>game_state.json:</strong> Stores current positions (player, key, door, enemies).</li>
-  <li><strong>users.json:</strong> Stores user credentials and scores.</li>
-  <li><strong>public/assets:</strong> Background images and other visual resources.</li>
-</ul>
-
-<!-- CUSTOMIZATION SECTION -->
-<h2>CUSTOMIZATION</h2>
-<ul>
-  <li><strong>Change game board size:</strong> Edit grid size in <code>client.js</code> and <code>server.js</code> for different layouts.</li>
-  <li><strong>Add more enemies:</strong> Update enemy positions in <code>game_state.json</code> and adjust enemy logic in <code>server.js</code>.</li>
-  <li><strong>Adjust points awarded:</strong> Modify scoring logic in <code>server.js</code>.</li>
-  <li><strong>Customize styles:</strong> Edit <code>styles.css</code> to modify colors, button sizes, or layout.</li>
-</ul>
-
-<!-- FUTURE IMPROVEMENTS SECTION -->
-<h2>FUTURE IMPROVEMENTS</h2>
-<ul>
-  <li><strong>Difficulty Levels:</strong> Add settings for varying enemy speeds or adding obstacles.</li>
-  <li><strong>High Score Table:</strong> Store scores in a database to create leaderboards.</li>
-  <li><strong>Sound Effects:</strong> Add audio effects for actions, victories, or defeats.</li>
-  <li><strong>Responsive Design:</strong> Optimize UI for better mobile and tablet experience.</li>
-</ul>`,
-    technologies: "Node.js, Express, JavaScript, HTML/CSS, JSON",
-    challenges:
-      "Log properly the positions of the characters, adding scores based on that and avoid re-adding them",
-    github: "https://github.com/o-Bunny-o/la_porte",
+    github: "https://github.com/yourUsername/calculator",
   },
   "premiers-vendredis": {
     slug: "premiers-vendredis",
@@ -265,7 +171,7 @@ const PROJECT_DATA: ProjectData = {
     challenges: "Server-side rendering and SEO optimization",
     github: null,
   },
-}
+};
 
 const slideFromLeft = {
   hidden: { x: -100, opacity: 0 },

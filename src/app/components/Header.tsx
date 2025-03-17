@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 // a single dust particle that animates & loops every 15 seconds.
 function DustParticle({ offsetX, offsetY }: { offsetX: number; offsetY: number }) {
@@ -99,11 +100,13 @@ export default function Header() {
       >
         <div className="flex justify-between items-center">
         <Link href="/">
-          <img
-            src="/images/logo.png"
-            alt="MyPortfolio"
-            className="block md:hidden w-48 h-auto mx-8"
-          />
+        <Image
+              src="/images/logo.png"
+              alt="MyPortfolio"
+              width={192} // 48 * 4 = 192px (adjust as needed)
+              height={96} // adjust height as needed
+              className="block md:hidden mx-8"
+            />
         </Link>
 
           {/* centered desktpo navs */}

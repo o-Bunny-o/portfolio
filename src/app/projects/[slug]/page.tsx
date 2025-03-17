@@ -4,7 +4,6 @@ import { useParams } from "next/navigation"
 
 interface ProjectData {
   [key: string]: {
-    video: any
     slug: string
     title: string
     image: string
@@ -16,16 +15,14 @@ interface ProjectData {
 
 const PROJECT_DATA: ProjectData = {
   "neon-calculator": {
-    video: null,
     slug: "neon-calculator",
     title: "Neon Calculator",
     image: "/images/calculator.png",
-    description: "",
+    description: "Description détaillée du projet 1",
     technologies: "React, Next.js, Tailwind CSS",
-    challenges: "",
+    challenges: "Intégration d'une API externe et animation",
   },
   "la-porte": {
-    video: null,
     slug: "la-porte",
     title: "La Porte",
     image: "/images/laportelogo.png",
@@ -104,7 +101,6 @@ const PROJECT_DATA: ProjectData = {
       "Log properly the positions of the characters, adding scores based on that and avoid re-adding them",
   },
   "todo-list": {
-    video: null,
     slug: "todo-list",
     title: "Todo List",
     image: "/images/todolist.png",
@@ -113,7 +109,6 @@ const PROJECT_DATA: ProjectData = {
     challenges: "Gestion d'état complexe",
   },
   "premiers-vendredis": {
-    video: null,
     slug: "premiers-vendredis",
     title: "Les Premiers Vendredis",
     image: "/images/premiers.jpg",
@@ -122,20 +117,19 @@ const PROJECT_DATA: ProjectData = {
     challenges: "Rendu côté serveur et optimisation SEO",
   },
   "icons": {
-    video: null,
     slug: "icons",
-    title: "Milano Cortina",
-    image: "/images/icons.jpg",
+    title: "LMilano Cortina",
+    image: "/images/picons.jpg",
     description: "Description détaillée du projet 4",
     technologies: "Next.js, Tailwind CSS",
     challenges: "Rendu côté serveur et optimisation SEO",
   },
-
-}
+};
 
 export default function ProjectDetailPage() {
-  const params = useParams();
-  const slug = params?.slug as string;
+  // error "any" correction, specificly write the params
+  const params = useParams() as { slug: string };
+  const slug = params.slug;
   const project = PROJECT_DATA[slug];
 
   if (!project) {
@@ -170,30 +164,6 @@ export default function ProjectDetailPage() {
         className="text-secondary text-white font-quicksand mb-4 whitespace-pre-line mt-4"
         dangerouslySetInnerHTML={{ __html: project.description }}
       />
-      {/* video only if project.video exists */}
-      {project.video && (
-        <div className="mt-8">
-          <video controls className="w-full rounded">
-            <source src={project.video} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </div>
-      )}
-      {slug === "icons" && (
-        <div className="mt-8">
-          <iframe
-            src="https://www.behance.net/embed/project/143737055?ilo0=1"
-            height="316"
-            width="404"
-            allowFullScreen
-            loading="lazy"
-            frameBorder="0"
-            allow="clipboard-write"
-            referrerPolicy="strict-origin-when-cross-origin"
-            className="mx-auto rounded"
-          ></iframe>
-        </div>
-      )}
     </section>
   );
 }

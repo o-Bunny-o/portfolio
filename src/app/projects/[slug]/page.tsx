@@ -279,7 +279,6 @@ const slideFromRight = {
 
 export default function ProjectDetailPage() {
   const params = useParams() as { slug: string }
-  const router = useRouter()
   const slug = params.slug
   const project = PROJECT_DATA[slug]
 
